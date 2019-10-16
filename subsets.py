@@ -9,6 +9,7 @@ class Solution:
     def subsets(self, nums):
         # write your code here
         length = len(nums)
+        nums.sort()
         s = self.subsets_recursive(nums,length)
         s.append([])
         return s
