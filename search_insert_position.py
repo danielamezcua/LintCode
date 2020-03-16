@@ -4,21 +4,18 @@ class Solution:
     @param target: an integer to be inserted
     @return: An integer
     """
+    #we do a binary search. If the element is not found, we check the last element we ended up with.
+    #if it's lower than our target, then the target would be right after this element
+    #if it's greater, then the target would be right before this element
     def search_aux(self,A,target,start,end):
         if end <= start:
             n = len(A)
-            if A[end] == target:
-                return end
-            elif A[end] > target:
-                index = end
-                while index >= 0 and A[index] > target:
-                    index -= 1
-                return index + 1
+            if A[start] == target:
+                return start
+            elif A[start] > target:
+                return start
             else:
-                index = end
-                while index < n and A[index] < target:
-                    index += 1
-                return index
+                return start + 1
         middle = (end + start)//2
         if A[middle] == target:
             return middle

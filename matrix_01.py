@@ -8,7 +8,7 @@ class Solution:
         # write your code here
         def get_neighbours(position):
             #up, down, left, right
-            directions = [(-1,0),(1,0),(-1,0),(1,0)]
+            directions = [(-1,0),(1,0),(0,-1),(0,1)]
             for direction in directions:
                 ni = position[0] + direction[0]
                 nj = postition[1] + direction[1]

@@ -14,7 +14,7 @@ class Solution:
 			if A[i] < 0:
 				number_bit = 1 << A[i] * -1
 				bit_vector_negatives = bit_vector_negatives ^ number_bit
-			else:
+			else: 
 				number_bit = 1 << A[i]
 				bit_vector = bit_vector ^ number_bit
 		
