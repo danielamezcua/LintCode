@@ -11,14 +11,14 @@ class Solution:
             directions = [(-1,0),(1,0),(0,-1),(0,1)]
             for direction in directions:
                 ni = position[0] + direction[0]
-                nj = postition[1] + direction[1]
-                if (0 <= ni <= len(matrix)) and (0 <= nj <= len(matrix[0])) and matrix[ni][nj] != 0:
+                nj = position[1] + direction[1]
+                if (0 <= ni < len(matrix)) and (0 <= nj < len(matrix[0])) and matrix[ni][nj] != 0:
                     yield ni,nj
         queue = deque()
         visited = set()
         # get positions of all zeros
-        for i in range(matrix):
-            for j in range(matrix[i]):
+        for i in range(len(matrix)):
+            for j in range(len(matrix[i])):
                 if matrix[i][j] == 0:
                     #enqueue the position and the distance to the nearest 0
                     queue.append((i,j, 0))
@@ -32,7 +32,7 @@ class Solution:
                 #from the nature of BFS, we know that when the cell is visited,
                 #it's caller is the closest possible path to a 0.
                 if (ni,nj) not in visited:
-                    matrix[i][j] = position[2] + 1
+                    matrix[ni][nj] = position[2] + 1
                     queue.append((ni,nj, position[2] + 1))
                     visited.add((ni,nj))
         return matrix
