@@ -16,7 +16,8 @@ class Solution:
             return -1
                 
         
-        #variation of binary search. if we find a true. we look for 
+        #variation of binary search. we are just looking for the first true. on an array consisting of k falses and then m trues
+        #(k+m) = length of the array
         left = 1
         right = n
         

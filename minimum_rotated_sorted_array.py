@@ -7,7 +7,6 @@ class Solution:
     #[2,1]
     def findMin(self, nums):
         # write your code here
-        
         n = len(nums)
         if n == 0:
             return -1
@@ -20,14 +19,16 @@ class Solution:
             middle = start + (end-start)//2
             
             if (middle > 0 and nums[middle] < nums[middle-1]):
-                return middle
+                return nums[middle]
+            if (middle < n-1 and nums[middle+1] < nums[middle]):
+                return nums[middle + 1]
             
             #check which part is unsorted(rotated)
-            if nums[start] <= nums[middle] and nums[middle] > nums[end]:
-                #left part is sorted, right is unsorted
-                left = middle + 1
-            else:
-                #left part is rotated
-                end = middle
+            if nums[start] > nums[middle]: #left part is unsorted
+                end = middle - 1
+            elif nums[end] < nums[middle]: #right part is unsorted
+                start = middle + 1
+            else: #array is sorted, so we just return the first position
+                return nums[start]
         return nums[start]
             
