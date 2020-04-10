@@ -4,19 +4,24 @@ class Solution:
     @return: the number of letters that are illegal
     """
     def count(self, s):
-        # Write your code here.
         uppercase_allowed = True
+        uppercase_required = True
         mistakes = 0
-        for char in s:
-            if char == '.':
+        for character in s:
+            if character == '.':
+                uppercase_required = True
+            elif character == ' ' or character == ',':
                 uppercase_allowed = True
-            if self.is_upper(char) and not uppercase_allowed:
-                mistakes += 1
-            elif self.is_lower(char) and uppercase_allowed:
-                mistakes += 1
-            elif self.is_upper(char):
+            else:
+                if uppercase_required:
+                    if self.is_lower(character):
+                        mistakes+=1
+                    uppercase_required = False
+                elif self.is_upper(character) and not uppercase_allowed:
+                    mistakes+=1
                 uppercase_allowed = False
         return mistakes
+            
     def is_lower(self,char):
         if ord(char) >= 97 and ord(char) <= 122:
             return True
@@ -25,5 +30,5 @@ class Solution:
     def is_upper(self,char):
         if ord(char) >= 65 and ord(char) <= 90:
             return True
-        else
+        else:
             return False
